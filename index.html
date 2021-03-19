@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="style.css">-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src='https://unpkg.com/konva@4.0.0/konva.min.js'></script>
+    <style src='https://unpkg.com/konva@4.0.0/konva.min.js'></style>
+    <style>
+      .head{
+/*    display: flex;*/
+    justify-content:space-between;
+    margin-bottom: 2vw;
+    background-color: #b3d3df;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+.head-obj{
+    width: 10vw;
+    background-color: #b3d3df;
+    border-top: none;
+    border-bottom: 1px solid black;
+    border-left: none;
+    border-right: none;
+    padding-top:1vw;
+    padding-bottom: 1vw;
+/*    margin-bottom: 0.5vw;*/
+}
+.head-obj button{
+    width: 100%;
+    font-size: 1vw;
+    background-color: #b3d3df;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-right: none;
+}
+
+.special input{
+    width: 100%;
+    font-size: 1vw;
+    background-color: #b3d3df;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;display: flex;
+    flex-wrap: wrap;
+    border-right: none;
+    border-right: none;
+}
+
+html{
+    background-color:#97b6c2;
+    overflow-x: hidden;
+}
+.body{
+    background-color: #b3d3df;
+/*    display: flex;*/
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw;
+    border-radius: 1vw;
+    display: block;
+    height: auto;
+}
+.body-brash{
+    margin-bottom: 2vw;
+}
+.body-brash span{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+.body-brash button{
+    width: 4vw;
+}
+.body-tools input{
+    font-size: 1.5vw;
+
+}
+
+canvas{
+    cursor: none;
+
+}
+#circle{
+    display: none;
+    position:absolute;
+    top:3px;
+    left:3px;
+/*     background:black; */
+    border: 2px solid black;
+    z-index: 5;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    margin-top: 0em;
+    margin-left: 0em;
+/*    background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0) 30px, rgb(255, 255, 255) 31px, rgb(255, 255, 255) 30px);*/
+    pointer-events: none;
+
+}
+.first{
+
+}
+.wrap{
+    display: flex;
+    justify-content:space-between;
+}
+
+
+
+
+.form_radio_btn {
+/*	display: inline-block;*/
+    text-align: center;
+	margin-right: 10px;
+    margin-bottom: 1vw;
+
+}
+.form_radio_btn input[type=radio] {
+	display: none;
+}
+.form_radio_btn label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-radius: 6px;
+	user-select: none;
+}
+
+/* Checked */
+.form_radio_btn input[type=radio]:checked + label {
+	background: #ffe0a6;
+}
+
+/* Hover */
+.form_radio_btn label:hover {
+	color: #666;
+}
+
+/* Disabled */
+.form_radio_btn input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
+}
+        .gallery{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width: 100vw;
+            height: 100vw;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9;
+/*            display: none;*/
+        }
+        .gallery__wrapper{
+            background: white;
+            padding:1vw;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 15vw;
+            margin-right: 15vw;
+            width: 60%;
+            border-radius: 0.5vw;
+            margin-top: 3vw;
+        }
+        .gallery__item{
+            width: 25%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+        }
+        .gallery-close{
+            text-align: right;
+            font-size: 3vw;
+            position: absolute;
+            right: 25px;
+        }.gallery-close:hover{
+            cursor: pointer
+        }
+
+        .delete{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width: 100vw;
+            height: 100vw;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9;
+/*            display: none;*/
+        }
+        .delete__wrapper{
+            background: white;
+            padding:1vw;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 15vw;
+            margin-right: 15vw;
+            width: 60%;
+            border-radius: 0.5vw;
+            margin-top: 3vw;
+        }
+        .delete__item{
+            width: 25%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+        }
+        .delete-close{
+            text-align: right;
+            font-size: 3vw;
+            position: absolute;
+            right: 25px;
+        }.delete-close:hover{
+            cursor: pointer
+        }
+
+
+        .beforeAfter{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width: 100vw;
+            height: 100vw;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9;
+/*            display: none;*/
+        }
+        .beforeAfter__wrapper{
+            background: white;
+            padding:1vw;
+            display: flex;
+            flex-wrap: wrap;
+/*            margin-left: 5vw;*/
+/*            margin-right: 5vw;*/
+            width: 90%;
+            border-radius: 0.5vw;
+            margin-top: 3vw;
+        }
+
+        .beforeAfter-close{
+            text-align: right;
+            font-size: 3vw;
+            position: absolute;
+            right: 25px;
+        }.beforeAfter-close:hover{
+            cursor: pointer
+        }
+        .beforeAfter__wrapper-content{
+            flex-wrap: nowrap;
+        }
+        .before-text{
+            position: relative;
+            left: 0px;
+        }
+        .after-text{
+            position: relative;
+            text-align: right;
+            right: 20px;
+        }
+        .animationBA{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width: 100vw;
+            height: 100vw;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9;
+/*            display: none;*/
+        }
+        .animationBA__wrapper{
+            background: white;
+            padding:1vw;
+            display: flex;
+            flex-wrap: wrap;
+/*            margin-left: 5vw;*/
+/*            margin-right: 5vw;*/
+            width: 50%;
+            border-radius: 0.5vw;
+            margin-top: 3vw;
+        }
+
+        .animationBA-close{
+            text-align: right;
+            font-size: 3vw;
+            position: absolute;
+            right: 25px;
+        }.animationBA-close:hover{
+            cursor: pointer
+        }
+        .animationBA__wrapper-content{
+            flex-wrap: nowrap;
+        }
+        .animationBA__wrapper-after{
+            position: absolute;
+        }
+        @keyframes my-fancy-animation {
+            from{opacity:1}
+            50%{opacity: 0}
+            to{opacity:1}
+        }
+        .run-animation{
+          animation: my-fancy-animation 2s infinite ease-in-out;
+        }
+        .takePhoto{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width: 100vw;
+            height: 100vw;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9;
+/*            display: none;*/
+        }
+        .takePhoto__wrapper{
+            background: white;
+            padding:1vw;
+            display: flex;
+            flex-wrap: wrap;
+/*            margin-left: 5vw;*/
+/*            margin-right: 5vw;*/
+            width: 50%;
+            border-radius: 0.5vw;
+            margin-top: 3vw;
+        }
+
+        .takePhoto-close{
+            text-align: right;
+            font-size: 3vw;
+            position: absolute;
+            right: 25px;
+        }.takePhoto-close:hover{
+            cursor: pointer
+        }
+</style>
+<!--  <script src="/s3/static/partners/app.js"></script>-->
+ </head>
+  <body>
+    <div id='app' ref='app'>
+      <div class="" id='circle' ref='circle' v-bind:style="{ top : topCursor + 'px',left : leftCursor + 'px', width : cursorSize + 'px', height : cursorSize + 'px' }">
+    </div>
+
+    <transition name='bounce'>
+    <div class="takePhoto" v-if='showTP'>
+         <div class="takePhoto-close"><i class='fa fa-close' @click='takePhotoClose'></i></div>
+        <div class="takePhoto__wrapper" >
+            <video id="video" width="640" height="480" autoplay></video>
+            <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
+            <canvas id="canvasPhoto" width="640" height="480"></canvas>
+            <!-- <img src="http://goo.gl/qgUfzX" id="photo" alt="Ваша фотография"> -->
+        </div>
+      </div>
+  </transition>
+
+  <transition name='bounce'>
+    <div class="animationBA" v-if='showBAA'>
+         <div class="animationBA-close"><i class='fa fa-close' @click='animationBAclose'></i></div>
+        <div class="animationBA__wrapper" >
+            <div class="animationBA__wrapper-before"></div>
+            <div class="animationBA__wrapper-after run-animation"></div>
+            <input type="button" value='stop' @click='stopAnim'>
+            <input type="button" value='run' @click='runAnim'>
+        </div>
+      </div>
+  </transition>
+
+
+  <transition name='bounce'>
+   <div class="beforeAfter" v-if='showBA'>
+     <div class="beforeAfter-close"><i class='fa fa-close' @click='beforeAfterclose'></i></div>
+      <div class="beforeAfter__wrapper" >
+          <div class="beforeAfter__wrapper-cont">
+              <div class="before-text">До</div>
+              <div class="after-text">После</div>
+              <div class="beforeAfter__wrapper-content" id ='beforeAfter__wrpper'></div>
+          </div>
+          <div class="beforeAfter__wrapper-btns">
+              <input type="button" value="save" @click='beforeAfterSave'>
+              <input type="button" value="print" @click='beforeAfterPrint'>
+              <input type="button" value='animation' @click='beforeAfterAnimation'>
+          </div>
+      </div>
+   </div>
+   </transition>
+
+  <transition name='bounce'>
+   <div class="delete" v-if='showD'>
+     <div class="delete-close"><i class='fa fa-close' @click='closeDelete'></i></div>
+      <div class="delete__wrapper" >
+          <p>Вы уверны, что хотите все удалить</p>
+          <input type="button" value='Удалить' @click='reset'>
+      </div>
+   </div>
+   </transition>
+
+
+  <transition name='bounce'>
+   <div class="gallery" v-if='show'>
+     <div class="gallery-close"><i class='fa fa-close' @click='closeGallery'></i></div>
+      <div class="gallery__wrapper">
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       <div class="gallery__item"><img src="img/yoda.jpg" alt="" @click='changeFromGallery'></div>
+       </div>
+   </div>
+   </transition>
+    <div class="wrap">
+     <div class="body-main" id='body-main'  style="width:500px;height:500px;overflow: hidden;">
+<!--        <div class="fordrug" @dragstart="handleDragStart" @dragend="handleDragEnd" >-->
+        <v-stage ref="stage" :config="stageSize" @click='onClickCanvas' >
+           <v-layer></v-layer>
+            <v-layer ref="layer" >
+                <v-image
+                  @dragstart='startDrag' @dragstop='stopDrag'
+                  class='first'
+                  :config="{
+                    image:image,
+                    x: 0,
+                    y: 0,
+                    width:widthImg,
+                    height:heightImg,
+<!--                    draggable: draggingActive,-->
+                    blur:5,
+                    fill: isDragging ? 'green' : 'black'
+                  }"
+                />
+            </v-layer>
+            <v-layer ref="layer1" class='second'></v-layer>
+        </v-stage>
+<!--        </div>-->
+        </div>
+        <div class="body">
+            <div class="body-brash">
+             <button type="button" name="button" @click='cursorBigger'><p>+</p></button>
+              <span>Brush Size</span>
+              <button type="button" name="button"@click='cursorSmaller'><p>-</p></button>
+            </div>
+            <form action="">
+            <div class="body-tools">
+             <div class="form_radio_btn">
+                <input id="category_id1" type="radio" name="category_id" @change="onChange($event)" value="Reshape" disabled>
+                <label for="category_id1">Reshape </label>
+            </div>
+
+            <div class="form_radio_btn">
+                <input @change="onChange($event)" id="category_id2" type="radio" name="category_id" value="Shrink">
+                <label for="category_id2">Shrink</label>
+            </div>
+
+            <div class="form_radio_btn">
+                <input @change="onChange($event)" id="category_id3" type="radio" name="category_id" value="Grow">
+                <label for="category_id3">Grow</label>
+            </div>
+
+            <div class="form_radio_btn">
+                <input @change="onChange($event)" id="category_id4" type="radio" name="category_id" value="Bleminsh_Removal" >
+                <label for="category_id4">Bleminsh Removal</label>
+            </div>
+             <div class="form_radio_btn">
+                <input id="category_id5" type="radio" name="category_id" value="Un-Reshape" disabled>
+                <label for="category_id5">Un-Reshape</label>
+            </div>
+
+<!--
+            <div class="form_radio_btn">
+                <input id="category_id6" type="radio" value="Pan" name="category_id"  @change="onChange($event)">
+                <label for="category_id6">Pan</label>
+            </div>
+-->
+            </form>
+            <div style="display: flex;font-size: 1vw;">
+            <input type="button" @click='right' value="подвинуть  налево"style="width: 10vw;font-size: 1vw;text-align: center;">
+            <div style="width: 15vw;text-align: center;">
+            <input type="button" @click='down' value="подвинуть вверх">
+            <input type="button" @click='up' value="подвинуть вниз ">
+            </div>
+            <input type="button" @click='left' value="подвинуть направо"style="width: 10vw;font-size: 1vw;text-align: center;">
+            </div>
+<!--
+              <label><input type="radio" name="category_id" value="Reshape" v-models='choose' @change="onChange($event)">Reshape</label><br>
+              <label><input type="radio" name="category_id" value="Shrink" v-models='choose' @change="onChange($event)">Shrink</label><br>
+              <label><input type="radio" name="category_id" value="Grow" v-models='choose' @change="onChange($event)">Grow</label><br>
+              <label><input type="radio" name="category_id" value="Bleminsh_Removal" v-models='choose' @change="onChange($event)">Bleminsh Removal</label><br>
+              <label><input type="radio" name="category_id" value="Un-Reshape" v-models='choose' @change="onChange($event)">Un-Reshape</label><br>
+              <label><input type="radio" name="category_id" value="Pan" v-models='choose' @change="onChange($event)">Pan</label><br>
+-->
+
+            </div>
+      </div>
+      <div class="head">
+        <div class="head-obj"><button type="button" name="button" @click='save'><i class='fa fa-camera' ></i><p>Save Photo</p></button></div>
+        <div class="head-obj special"><input type="file" id="files" ref="files"  @change="handleFileUploads($event)"/></div>
+        <div class="head-obj"><button type="button" name="button" v-on:click='gallery'><p>Открыть фото из галлереи </p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='takePhoto'><i class='fa fa-'></i><p>Сделать фото</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='print'><i class='fa fa-print'></i><p>Print Photo</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='bigger'><p>+</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='smaller'><p>-</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='onBack'><i class='fa fa-undo'></i><p>Undo</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='onForward'><i class='fa fa-forward'></i><p>Redo</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='reset_accept'><i class='fa fa-trash'></i><p>Reset</p></button></div>
+        <div class="head-obj"><button type="button" name="button" @click='beforeAfter'><i class='fa fa-'></i><p>After/Before</p></button></div>
+      </div>
+
+    </div>
+
+
+    <script src='https://unpkg.com/vue-konva/umd/vue-konva.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-alpha2/html2canvas.min.js" integrity="sha512-CJi0bpUbf0lNblXz2lmO5mtVBlWi4XLoJjspIsuDemuYf0DbrQnuR/aXvvEpOjr6pyD0iJqeFnljtfcEZ4tYCg==" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.0/jquery.ba-throttle-debounce.js" integrity="sha512-V7XxZXuHoFwWZ6lqZubTVN8c8Ff8BqA64bd8oA+DWXIvbu4NM41mvR319HtHFSB4U3P4ctsWeFwUw7S29uh8Vw==" crossorigin="anonymous"></script>
+
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" >
+        var width = 500;
+        var height = 500;
+        var appl = document.getElementById('app');
+        var cursorSizeC = 30;
+        var cursorK = 1;
+        var  startWidth = 0;
+        var startHeight = 0;
+        function processImage(inImg) {
+          const width = inImg.width;
+          const height = inImg.height;
+          const src = new Uint32Array(inImg.data.buffer);
+
+          // Blur
+          processCanvas('canvasBlur', width, height, function(dst) {
+            let size =2;
+
+            let dstIndex = 0;
+            for (let y = 0; y < height; y++) {
+              for (let x = 0; x < width; x++) {
+                let a = 0, r = 0, g = 0, b = 0, count = 0;
+                for (let sy = y - size; sy <= y + size; sy++) {
+                  const yy = Math.min(height - 1, Math.max(0, sy));
+                  for (let sx = x - size; sx <= x + size; sx++) {
+                    const xx = Math.min(width - 1, Math.max(0, sx));
+                    let pix = src[yy * width + xx];
+                    r += pix & 0xFF;
+                    g += (pix >> 8) & 0xFF;
+                    b += (pix >> 16) & 0xFF;
+                    a += (pix >> 24) & 0xFF;
+                    count++;
+                  }
+                }
+
+                a = (a / count) & 0xFF;
+                r = (r / count) & 0xFF;
+                g = (g / count) & 0xFF;
+                b = (b / count) & 0xFF;
+
+                dst[dstIndex++] = (a << 24) | (b << 16) | (g << 8) | r;
+              }
+            }
+          });
+        }
+
+        function getImageData(el) {
+          const canvas = el;
+          const context = canvas.getContext('2d');
+
+          return context.getImageData(0, 0, width, height);
+        }
+
+        function processCanvas(canvasId, width, height, func) {
+          const canvas = document.getElementsByTagName('canvas')[0];
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          const outImg = ctx.createImageData(width, height);
+          const dst = new Uint32Array(outImg.data.buffer);
+          func(dst);
+          ctx.putImageData(outImg, 0, 0);
+        }
+
+        var Mapper = function(width,height,filter) {
+
+            var map = [];
+
+            this.flower = function(px,py) {
+                var x = px-width/2;
+                var y = py-height/2;
+                var r = Math.sqrt(x*x+y*y)/2;
+                var maxr = width/2;
+                var a = Math.atan2(y,x);
+                var d = r*Math.sin(a*7);
+                return {
+                    'x': px+Math.cos(a)*d*0.4,
+                    'y': py+Math.sin(a)*d*0.4
+                }
+            }
+
+            this.pyramid = function(px,py) {
+                px = px - height/2;
+                py = py - height/2;
+                var distance = Math.max(Math.abs(px),Math.abs(py));
+                px *= distance/width*2;
+                py *= distance/height*2;
+                return {
+                    'x': px+width/2,
+                    'y': py+height/2
+                }
+            }
+            this.unspherize = function(px,py) {
+                var x = px-width/2;
+                var y = py-height/2;
+                var r = Math.sqrt(x*x+y*y);
+                var maxr = width/cursorSizeC;//Radiuse is here
+                if (r>maxr) return {'x':px,'y':py}
+                var a = Math.atan2(y,x);
+                var k = Math.sqrt((r/maxr)*(r/maxr))*0.9+0.1;
+                var dx = Math.cos(a)*maxr*k;
+                var dy = Math.sin(a)*maxr*k;
+                return {
+                    'x': dx+width/2,
+                    'y': dy+height/2
+                }
+            }
+            this.spherize = function(px,py) {
+                var x = px-width/2;
+                var y = py-height/2;
+                var r = Math.sqrt(x*x+y*y);
+                var maxr = width/cursorSizeC;//Radiuse is here
+                if (r>maxr) return {'x':px,'y':py}
+                var a = Math.atan2(y,x);
+                var k = (r/maxr)*(r/maxr)*0.5+0.5;
+                var dx = Math.cos(a)*r*k;
+                var dy = Math.sin(a)*r*k;
+                return {
+                    'x': dx+width/2,
+                    'y': dy+height/2
+                }
+            }
+            this.blure = function(px,py) {
+                var x = px-width/2;
+                var y = py-height/2;
+                var r = Math.sqrt(x*x+y*y);
+                var maxr = width/cursorSizeC;//Radiuse is here
+                if (r>maxr) return {'x':px,'y':py}
+                var a = Math.atan2(y,x);
+                var k = (r/maxr)*(r/maxr)*0.1+0.1;
+                var dx = Math.cos(a)*r*k;
+                var dy = Math.sin(a)*r*k;
+                return {
+                    'x': px*4,
+                    'y': py*4
+                }
+            }
+
+            this.exec = function(bitmap, texture) {
+                var height = bitmap.height;
+                var width = bitmap.width;
+                var colorat = function(x,y,channel) {
+                    return texture.data[(x+y*height)*4+channel];
+                }
+                for (var j=0; j<height; j++) {
+                    for (var i=0; i<width; i++) {
+                        var u = map[(i+j*height)*2];
+                        var v = map[(i+j*height)*2+1];
+                        var x = Math.floor(u);
+                        var y = Math.floor(v);
+                        var kx = u-x;
+                        var ky = v-y;
+                        for (var c=0; c<4; c++) {
+                            bitmap.data[(i+j*height)*4+c] =
+                                (colorat(x,y  ,c)*(1-kx) + colorat(x+1,y  ,c)*kx) * (1-ky) +
+                                (colorat(x,y+1,c)*(1-kx) + colorat(x+1,y+1,c)*kx) * (ky);
+                        }
+                    }
+                }
+            };
+
+            this.setTranslate = function(translator) {
+                if (typeof translator === 'string') translator = this[translator];
+                for (var y=0; y<height; y++) {
+                    for (var x=0; x<width; x++) {
+                        var t = translator(x,y);
+                        map[(x+y*height)*2+0] = Math.max(Math.min(t.x,width-1),0);
+                        map[(x+y*height)*2+1] = Math.max(Math.min(t.y,height-1),0);
+                    }
+                }
+            }
+
+            this.setTranslate(filter);
+        }
+        new Vue({
+            el: '#app',
+            data: {
+                stageSize: {
+                    width: width,
+                    height: height
+                },
+                image: null,
+                bimage:null,
+                isDragging: false,
+                heightImg:0,
+                widthImg:0,
+                circlee: document.getElementById('circle'),
+                topCursor:0,
+                leftCursor:0,
+                cursorSize: 30,
+                over : false,
+                draggingActive:false,
+                choose:'',
+                src :'',
+                dst : '',
+                input : '',
+                output : '',
+                bitmap : '',
+                mapper : '',
+                buttons : '',
+                locked : false,
+                main:'',
+                blurLayer:'',
+                clearing:false,
+                timer:'',
+                last:[],
+                forward:'',
+                original:'',
+                originalF:false,
+                startDragX:'',
+                startDragY:'',
+                leftK:false,
+                blureK:true,
+                upK:false,
+                rightK:false,
+                  downK:false,
+                show:false,
+                showD:false,
+                showBA:false,
+                showBAA:false,
+                backC:0,
+                showTP:false,
+            },
+            methods: {
+                takePhotoClose(){
+                    this.showTP=false;
+                },
+                takePhoto(){
+                    this.showTP=true;
+                    setTimeout(function(scope){
+                      var video = document.getElementById('video');
+                      var canvas = document.getElementById('canvasPhoto');
+                      var context = canvas.getContext('2d');
+                      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+                            video.srcObject = stream;
+                            video.play();
+                        });
+                        document.getElementById("capture").addEventListener("click", function() {
+                        	scope.input.drawImage(video, 0, 0, 640,480);
+                          scope.image.src = URL.createObjectURL(video);
+                          scope.showTP=false;
+                        });
+                      }
+                    }, 50,this);
+
+                },
+                stopAnim(){
+                    document.querySelector('.animationBA__wrapper-after').classList.remove("run-animation");
+                },
+                runAnim(){
+                     document.querySelector('.animationBA__wrapper-after').classList.add("run-animation")
+                },
+
+                closeGallery(){
+                    this.show = false
+                },
+                gallery(){
+                    this.show=true;
+
+                    console.log('asdasdasdasd')
+                },
+                closeDelete(){
+                    this.showD=false;
+                },
+                beforeAfterclose(){
+                    this.showBA=false;
+                },
+                animationBAclose(){
+                    this.showBAA=false;
+                },
+                reset_accept(){
+                    this.showD=true;
+                },
+                changeFromGallery(e){
+                    var src = e.currentTarget.getAttribute('src');
+                    this.image.crossOrigin = "Anonymous";
+                    this.image.src = src;
+                    this.show = false;
+                },
+                up(){
+                    if(this.upK){
+                        var j = document.getElementsByClassName('konvajs-content')[0].style.top;
+                        console.log(j);
+                        document.getElementsByClassName('konvajs-content')[0].style.top = parseInt(j, 10)+20+'px';
+                    }else{
+                        document.getElementsByClassName('konvajs-content')[0].style.top = 20+'px';
+                        this.downK = true;
+                        this.upK=true;
+                    }
+                },
+                left(){
+                    if(this.leftK){
+                        var j = document.getElementsByClassName('konvajs-content')[0].style.left;
+                    console.log(j);
+                    document.getElementsByClassName('konvajs-content')[0].style.left = parseInt(j, 10)+20+'px';
+                    }else{
+                        document.getElementsByClassName('konvajs-content')[0].style.left = 20+'px';
+                        this.rightK = true;
+                        this.leftK=true;
+                    }
+                },
+                right(){
+                    if(this.rightK){
+                        var j = document.getElementsByClassName('konvajs-content')[0].style.left;
+                    console.log(j);
+                    document.getElementsByClassName('konvajs-content')[0].style.left = parseInt(j, 10)-20+'px';
+                    }else{
+                        document.getElementsByClassName('konvajs-content')[0].style.left = -20+'px';
+                        this.rightK = true;
+                        this.leftK=true;
+                    }
+                },
+                down(){
+                    if(this.downK){
+                        var j = document.getElementsByClassName('konvajs-content')[0].style.top;
+                    console.log(j);
+                    document.getElementsByClassName('konvajs-content')[0].style.top = parseInt(j, 10)-20+'px';
+                    }else{
+                        document.getElementsByClassName('konvajs-content')[0].style.top = -20+'px';
+                        this.downK = true;
+                        this.upK=true;
+                    }
+                },
+                beforeAfterAnimation(){
+                    this.showBA=false;
+                    this.showBAA=true;
+
+                    setTimeout(function(scope){
+                    var canvB = document.createElement('canvas');
+                    canvB.id = 'beforeCanvaso';
+                    canvB.width = width;
+                    canvB.height = height;
+                    document.querySelector('.animationBA__wrapper-before').appendChild(canvB);
+
+
+                    var canvA = document.createElement('canvas');
+                    canvA.id = 'afterCanvaso';
+                    canvA.width = width;
+                    canvA.height = height;
+                    document.querySelector('.animationBA__wrapper-after').appendChild(canvA);
+
+                    document.getElementById('afterCanvaso').getContext('2d').putImageData(scope.last[scope.backC-1],0,0);
+                    document.getElementById('beforeCanvaso').getContext('2d').putImageData(scope.original,0,0);
+                    }, 50,this);
+                },
+                beforeAfter(){
+                    this.showBA = true
+                    setTimeout(function(scope){
+
+
+                    var canvB = document.createElement('canvas');
+                    canvB.id = 'beforeCanvas';
+                    canvB.width = width;
+                    canvB.height = height;
+                    document.querySelector('#beforeAfter__wrpper').appendChild(canvB);
+
+                    var canvA = document.createElement('canvas');
+                    canvA.id = 'afterCanvas';
+                    canvA.width = width;
+                    canvA.height = height;
+                    document.querySelector('#beforeAfter__wrpper').appendChild(canvA);
+                    console.log(scope.last)
+                    document.getElementById('afterCanvas').getContext('2d').putImageData(scope.last[scope.backC-1],0,0);
+                    document.getElementById('beforeCanvas').getContext('2d').putImageData(scope.original,0,0);
+
+                    document.getElementById('afterCanvas').getContext('2d').fillStyle = "#00F";
+                    document.getElementById('afterCanvas').getContext('2d').strokeStyle = "#000";
+                    document.getElementById('afterCanvas').getContext('2d').font = "italic 30pt Arial";
+//                    document.getElementById('afterCanvas').getContext('2d').fillText("После", 20, 100);
+                    document.getElementById('afterCanvas').getContext('2d').font = 'bold 10px sans-serif';
+                    document.getElementById('afterCanvas').getContext('2d').strokeText("made with ***", 5, 15);
+
+                    document.getElementById('beforeCanvas').getContext('2d').fillStyle = "#00F";
+                    document.getElementById('beforeCanvas').getContext('2d').strokeStyle = "#F00";
+                    document.getElementById('beforeCanvas').getContext('2d').font = "30pt Arial";
+//                    document.getElementById('beforeCanvas').getContext('2d').fillText("До", 0, 100);
+                    }, 50,this);
+                },
+                createImage: function(file) {
+                    let reader = new FileReader();
+                    let vm = this;
+                    reader.onload = function(e) {
+                        vm.image = e.target.result;
+                    };
+                    return reader.readAsDataURL(file);
+
+                },
+                save(){
+                    this.widthImg = startWidth;
+                    this.heightImg = startHeight;
+                    console.log(1);
+                    var img    = this.src.toDataURL("image/png");
+                    var link = document.createElement('a');
+                    link.download = 'filename.png';
+                    link.href = this.src.toDataURL('image/png')
+                    link.click();
+                },
+                beforeAfterPrint(){
+                    html2canvas(document.querySelector("#beforeAfter__wrpper")).then(canvas => {
+                    printJS({printable: canvas.toDataURL(), type: 'image', imageStyle: 'width:100%'});
+                    });
+                },
+                beforeAfterSave(){
+                    html2canvas(document.querySelector("#beforeAfter__wrpper")).then(canvas => {
+                        var img = canvas.toDataURL("image/png");
+                        var link = document.createElement('a');
+                        link.download = 'filename.png';
+                        link.href = canvas.toDataURL('image/png')
+                        link.click();
+
+                    });
+                },
+                print(){
+                    printJS({printable: this.src.toDataURL(), type: 'image', imageStyle: 'width:100%'});
+
+                },
+                handleFileUploads(e){
+                     e.preventDefault();
+                  this.image.src = URL.createObjectURL(e.target.files[0]);
+                },
+                startDrag(e) {
+                  this.clearing = true;
+                    console.log(e);
+                    this.startDragX = e.evt.clientX;
+                    this.startDragY = e.evt.clientY;
+                  console.log(e.evt.offsetY);
+                },
+                stopDrag(e) {
+                    if (this.draggingActive){
+                    this.clearing = false;
+                    console.log(e);
+                    console.log(e.screenY);
+                    var rr = document.getElementsByTagName('canvas')[0]
+                    this.src.style.left =  e.clientX-this.startDragX+'px';
+                    this.src.style.top =   e.clientY-this.startDragY+'px';
+                        rr.style.left =  e.clientX-this.startDragX+'px';
+                    rr.style.top =   e.clientY-this.startDragY+'px';
+                        console.log((this.startDragX))
+                    }
+                },
+                draging(e){
+                    console.log(e+'asdasd');
+                },
+                doDrag(event) {
+
+                },
+                onBack(){
+                    console.log(this.last[this.backC-1])
+                    this.input.putImageData(this.last[this.backC-1],0,0) ;
+                    this.backC -= 1;
+                },
+                onForward(){
+                  this.input.putImageData(this.last[this.backC+1],0,0) ;
+                    this.backC += 1;
+                },
+                reset(){this.showD=false;
+                  this.input.putImageData(this.original,0,0) ;
+
+                },
+                onClickCanvas(e){
+                    this.backC += 1;
+                    if(this.originalF === false){
+                            this.original = this.input.getImageData(0,0,this.src.width,this.src.height);
+                            this.originalF = true
+                        }
+                    if(this.choose === 'Grow' || this.choose == 'Shrink' || this.choose == 'Bleminsh_Removal'){
+                        this.last.push(this.input.getImageData(0,0,this.src.width,this.src.height));
+                        html2canvas(document.querySelector(".konvajs-content")).then(canvas => {
+
+                            var xx = this.$refs.stage.getNode().getPointerPosition().x ;
+                            var yy = this.$refs.stage.getNode().getPointerPosition().y ;
+                            if (this.locked) return;
+                            this.locked = true;
+//                            processImage(getImageData(document.getElementsByTagName('canvas')[0]));
+                                document.body.appendChild(canvas);
+                                var texture = canvas.getContext('2d').getImageData(xx-Math.ceil(this.bitmap.width/2),yy-Math.ceil(this.bitmap.height/2),this.bitmap.width,this.bitmap.height+1);
+                                this.dst.style.left = xx-Math.floor(this.dst.width/2)+'px';
+                            this.dst.style.top = yy-(Math.floor(this.dst.height/2))+'px';
+                            this.mapper.exec(this.bitmap,texture);
+                            this.input.putImageData(this.bitmap,xx-Math.ceil(this.bitmap.width/2),yy-Math.ceil(this.bitmap.height/2),0,0,this.bitmap.width,this.bitmap.height+2);
+                            this.image.src = this.src.toDataURL('image/png');
+//                            this.input.putImageData(canvas.getContext('2d'),0,0,0,0,this.bitmap.width,this.bitmap.height+2);
+                            this.locked = false;
+                            this.forward = this.input.getImageData(0,0,this.src.width,this.src.height);
+                            document.body.removeChild(canvas);console.log('23453');
+
+                      });
+                        this.forward = this.input.getImageData(0,0,this.src.width,this.src.height);
+//                        this.input.putImageData(this.bitmap, xx-Math.ceil(this.bitmap.width/2),yy-Math.ceil(this.bitmap.height/2))
+
+                    }
+
+                },
+                onChange(event) {this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'spherize');
+                    var optionText = event.target.value;
+                    this.choose = event.target.value;
+                    if (this.choose === 'Pan'){
+                      this.draggingActive = true;
+                    }else {
+                      this.draggingActive = false;
+                    }
+                    if(this.choose === 'Grow'){
+                      console.log(this.choose);
+                        this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'spherize');
+                    }else if(this.choose === 'Shrink'){
+                        this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'unspherize');
+                    }else if(this.choose === 'Bleminsh_Removal'){
+                        document.getElementsByTagName('canvas')[0].getContext('2d').putImageData(this.src.getContext('2d').getImageData(0,0,this.src.width,this.src.height),0,0);
+                        this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'blure');
+                        html2canvas(document.querySelector(".konvajs-content")).then(canvas => {
+                           this.input.putImageData(this.forward,0,0,0,0,this.bitmap.width,this.bitmap.height+2);
+                            this.image.src = this.src.toDataURL('image/png');
+                       })
+                        processImage(getImageData(document.getElementsByTagName('canvas')[0]));
+                       
+                        
+                    }
+                },
+                mouseIsMoving(e){
+                    var x = e.pageX;
+                    var y = e.pageY;
+                    this.topCursor = y - this.cursorSize/2;
+                    this.leftCursor = x - this.cursorSize/2;
+                },
+                handleDragStart() {
+                    this.isDragging = true;
+                },
+                handleDragEnd() {
+                    this.isDragging = false;
+                },
+                bigger(){
+//                    document.querySelector('.konvajs-content').width  += 20;
+//                    document.querySelector('.konvajs-content').height  += 20;
+                    this.src.width  += 20;
+                    this.src.height += 20;
+                    this.src.style.width  = String(this.src.width+20)+'px';
+                    this.src.style.height = String(this.src.height+20)+'px';;
+                    var rr = document.getElementsByTagName('canvas')[0]
+                    rr.width  += 20;
+                    rr.height += 20;
+                    rr.style.width  = String(rr.width+20)+'px';
+                    rr.style.height = String(rr.height+20)+'px';;
+//                    var context = document.getElementsByTagName('canvas')[1].getContext("2d");
+//                    context.scale(12, 12);
+                    this.widthImg = this.widthImg + 20;
+                    this.heightImg = this.heightImg + 20;
+//                    context.setTransform(1, 0, 0, 1, 0, 0);
+                },
+                smaller(){
+                    this.src.width  -= 20;
+                    this.src.height -= 20;
+                    this.src.style.width  = String(this.src.width-20)+'px';
+                    this.src.style.height = String(this.src.height-20)+'px';
+                    var rr = document.getElementsByTagName('canvas')[0];
+                    rr.width  -= 20;
+                    rr.height -= 20;
+                    rr.style.width  = String(rr.width-20)+'px';
+                    rr.style.height = String(rr.height-20)+'px';;
+//                    var context = document.getElementsByTagName('canvas')[1].getContext("2d");
+//                    context.scale(12, 12);
+                    this.widthImg = this.widthImg - 20;
+                    this.heightImg = this.heightImg - 20;
+                },
+                cursorBigger(){
+                    if(this.cursorSize < 120){
+                      this.cursorSize = this.cursorSize + 10;
+                        cursorK = cursorK * 1.15
+                      cursorSizeC = cursorSizeC - 5/cursorK;
+                        console.log(this.cursorSize)
+                        if(this.choose === 'Grow'){
+                          console.log(this.choose);
+                            this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'spherize');
+                        }else if(this.choose === 'Shrink'){
+                            this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'unspherize');
+                        }else if(this.choose === 'Bleminsh_Removal'){
+                            this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'blure');
+                        }
+                    }
+                },
+                cursorSmaller(){
+                  this.cursorSize = this.cursorSize - 10;
+                     cursorK = cursorK * 1.15
+                  cursorSizeC = cursorSizeC + 5/cursorK;
+                    if(this.choose === 'Grow'){
+                        this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'spherize');
+                    }else if(this.choose === 'Shrink'){
+                        this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'unspherize');
+                    }else if(this.choose === 'Bleminsh_Removal'){
+                        this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'blure');
+                    }
+                },
+                mouseIn(){
+                    this.over = true;
+                    document.getElementById('circle').style.display = 'block';
+                },
+                mouseOut(){
+                    this.over = false;
+                    console.log('out');
+                    document.getElementById('circle').style.display = 'none';
+                }
+            },
+            computed: {
+
+            },
+            mounted(){
+//                document.getElementsByClassName('konvajs-content')[0].addEventListener('mouseup', this.stopDrag);
+                window.addEventListener('mousemove',this.mouseIsMoving);
+                document.getElementsByClassName('body-main')[0].addEventListener('mouseover',this.mouseIn);
+                document.getElementsByClassName('body-main')[0].addEventListener('mouseout',this.mouseOut);
+                this.blurLayer = document.getElementsByTagName('canvas')[0];
+                this.src = document.getElementsByTagName('canvas')[1];
+                this.dst = document.getElementsByTagName('canvas')[2];
+                this.input = this.src.getContext('2d');
+                this.output = this.dst.getContext('2d');
+
+                this.bitmap = this.output.getImageData(0,0,this.dst.width,this.dst.height);
+                this.mapper = new Mapper(this.bitmap.width,this.bitmap.height,'spherize');
+                this.buttons = document.getElementsByTagName('input');
+                this.locked = false;
+                 const image = new window.Image();
+                image.src = "https://n1s1.hsmedia.ru/56/dc/e3/56dce3b30bee2cfa2b7151a890d9dbae/620x498_1_7d29f34584919434c4e0a16f1e183deb@1931x1552_0xc0a839a2_16190443591476095296.jpeg";
+                image.onload = () => {
+                this.image = image;
+                this.heightImg = image.height;
+                this.widthImg = image.width;
+                    this.stageSize.width=image.width;
+                    this.stageSize.height = image.height;
+                    width = image.width;
+                    height =image.height
+                image.crossOrigin = "Anonymous";
+                startHeight = image.height;
+                startWidth = image.width;
+//                document.querySelector('.body-main').style.width = image.width+'px';
+//                document.querySelector('.body-main').style.height = image.height+'px';
+                if (startWidth>width){
+//                    while(width>startWidth || height>startHeight){
+                        startHeight = startHeight - (startWidth - width);
+                        startWidth = startWidth - (startWidth - width);
+                        this.heightImg = startHeight;
+                        this.widthImg = startWidth;
+                        console.log(startWidth);
+                        console.log(startHeight);
+                    }
+                if (startHeight>height){
+//                    while(width>startWidth || height>startHeight){
+                        startHeight = height - (startHeight - height);
+                        startWidth = width - (startWidth - height);
+                        this.heightImg = startHeight;
+                        this.widthImg = startWidth;
+                    }
+                };
+            },
+            destroyed: function() {
+                window.removeEventListener('mousemove', this.mouseIsMoving);
+            },
+            created() {
+
+        }
+    });
+</script>
+  </body>
+</html>
